@@ -1,0 +1,209 @@
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  top: 0;
+  margin-bottom: 5px;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.navbar a.right {
+  float: right;
+}
+
+/* Change color on hover */
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Active/current link */
+.navbar a.active {
+  background-color: #666;
+  color: white;
+}
+
+/* Slide bar start */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {
+    padding-top: 15px;
+  }
+
+  .sidebar a {
+    font-size: 18px;
+  }
+}
+
+/* Slide bar end */
+
+/* Search button start */
+.searchInput {
+  width: 8%;
+  border: 0;
+  border-radius: 4px;
+  font-size: 100%;
+  background: border-box;
+  background-repeat: no-repeat;
+  padding: 16px 16px 16px 16px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  float: right;
+  color: white;
+
+}
+
+.searchInput:focus {
+  background-color: #ddd;
+  color: black;
+  border: 0;
+  width: 30%;
+}
+
+@media screen and (max-width: 600px) {
+  .searchInput:focus {
+    width: 93%;
+  }
+
+  .searchInput {
+    width: 15%;
+  }
+
+}
+
+/* Search button end */
+
+/* Drop down button start */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Drop down button end */
+
+/*allert message start*/
+
+.alert {
+  padding: 1.2%;
+  background-color: #f44336;
+  color: white;
+  border: solid;
+  margin: -3px;
+  margin-bottom: 1px;
+}
+
+.success {
+  padding: 20px;
+  background-color: #04AA6D;
+  color: white;
+  border: solid;
+  margin: -3px;
+}
+
+.message {
+  padding: 20px;
+  background-color: dodgerblue;
+  color: white;
+  border: solid;
+  margin: -3px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+
+/*allert message end*/

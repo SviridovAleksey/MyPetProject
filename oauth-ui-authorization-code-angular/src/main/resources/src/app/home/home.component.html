@@ -1,0 +1,48 @@
+<div class="navbar">
+    <a href="#" id="main" (click)="openCloseNav()">☰</a>
+    <a href="#" (click)="showTab('homePage')">Home</a>
+    <a href="#" *ngIf="isLoggedIn" (click)="showTab('levels')">Folders</a>
+    <div *ngFor="let singInst of singleInstruction | slice:0:5; let i = index">
+        <div *ngIf="isLoggedIn && singInst.value" id={{i}}>
+            <a href="#" (click)="showNewStepViewer(singInst.key)">{{singInst.key.name}}</a>
+            <a href="#" (click)="closeStepViewer(i)">×</a>
+        </div>
+    </div>
+
+    <input class="searchInput" name="search" placeholder="Search..">
+</div>
+
+<div *ngFor="let message of messageText ; let i = index">
+    <div class="alert" *ngIf="message.type == 'error'">
+        <span class="closebtn" (click)="closeMessage(i)">&times;</span>
+        <strong>Error: </strong> {{message.text}}
+    </div>
+    <div class="success" *ngIf="message.type == 'success'">
+        <span class="closebtn" (click)="closeMessage(i)">&times;</span>
+        <strong>Success! </strong> {{message.text}}
+    </div>
+    <div class="message" *ngIf="message.type == 'message'">
+        <span class="closebtn" (click)="closeMessageErr(i)">&times;</span>
+        <strong>Message: </strong> {{message.text}}
+    </div>
+</div>
+
+<div *ngIf="isLoggedIn" class="content">
+    <app-instructions [hidden]="!tabs[2].value"></app-instructions>
+    <foo-details [hidden]="!tabs[1].value"></foo-details>
+    <app-steps [hidden]="!tabs[3].value"></app-steps>
+    <app-create-new-instructions [hidden]="!tabs[4].value"></app-create-new-instructions>
+    <app-levels [hidden]="!tabs[5].value"></app-levels>
+</div>
+
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" (click)="openCloseNav()">×</a>
+    <a href="#" *ngIf="!isLoggedIn" class="right" (click)="login()" type="submit">Login</a>
+    <div *ngIf="isLoggedIn">
+        <a href="#">Account</a>
+        <a href="#">Friends</a>
+        <a href="#">Groups</a>
+        <a href="#">News</a>
+        <a href="#" *ngIf="isLoggedIn" class="right" (click)="logout()">Logout</a>
+    </div>
+</div>

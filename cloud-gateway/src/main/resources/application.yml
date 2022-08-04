@@ -1,0 +1,59 @@
+server:
+  port: 8089
+  servlet:
+    context-path: /sso-gateway-server
+logging:
+  level:
+    org.springframework: DEBUG
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.boot.autoconfigure.cache: DEBUG
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: gateway
+  security:
+    sessions: STATELESS
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8083/auth/realms/sviridov
+          jwk-set-uri: http://localhost:8083/auth/realms/sviridov/protocol/openid-connect/certs
+  cloud:
+    gateway:
+      routes:
+        - id: instructionModule
+          uri: lb://EUREKA-INSTRUCTION
+          predicates:
+            - Path=/instruction-server/**
+          filters:
+            - name: RequestRateLimiter
+              args:
+                redis-rate-limiter.replenishRate: 500
+                redis-rate-limiter.burstCapacity: 1000
+                redis-rate-limiter.requestedTokens: 1
+
+info:
+  app:
+    name: ${spring.application.name}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:100@localhost:8090/eureka
+    register-with-eureka: false
+  instance:
+    preferIpAddress: false
+  healthcheck:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - mappings
+          - env
+          - health
+          - info
+

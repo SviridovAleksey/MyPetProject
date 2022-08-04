@@ -1,0 +1,21 @@
+server:
+  port: 8083
+logging:
+  level:
+    root: INFO
+spring:
+  application:
+    name: spring-cloud-eureka-authorization
+  datasource:
+    username: sa
+    url: jdbc:h2:mem:testdb
+  jpa:
+    generate-ddl: true
+keycloak:
+  server:
+    contextPath: /auth
+    adminUser:
+      username: sviridov-admin
+      password: pass
+    realmImportFile: sviridov-realm.json
+

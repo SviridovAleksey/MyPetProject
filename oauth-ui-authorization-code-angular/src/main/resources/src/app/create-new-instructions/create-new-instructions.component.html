@@ -1,0 +1,61 @@
+<form [formGroup]="instructionInfoForm">
+  <div class="newInstContainer">
+    <div class="flip-cardNewInst">
+      <div class="flip-card-inner" id=flipNewInst>
+        <div class="flip-card-front">
+          <div class="nameTurnContainer">
+            <textarea class="inputPlaceName" type="text" placeholder="Instruction name" maxlength="20"
+              [value]="instructionInfoForm.controls.name.value" formControlName="name"></textarea>
+            <button class="buttonTurn" (click)="flipNewInst()">↻</button>
+          </div>
+          <button class="btn">Add image</button>
+        </div>
+        <div class="flip-card-back">
+          <div class="nameTurnContainer">
+            <textarea class="inputPlaceName" type="text" placeholder="Instruction name" maxlength="20"
+              [value]="instructionInfoForm.controls.name.value" formControlName="name"></textarea>
+            <button class="buttonTurn" (click)="flipNewInst()">↻</button>
+          </div>
+          <textarea class="inputPlaceText" name="newStepText" placeholder="Description" maxlength="120"
+            formControlName="description"></textarea>
+          <button class="btn" (click)="createInstruction(instructionInfoForm.controls)">Save instruction</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+
+<div *ngIf="isInstructionCreate()">
+  <form [formGroup]="contactForm">
+    <div formArrayName="sections">
+      <ul class="stepContainer">
+        <li class="flip-card" *ngFor="let step of getSteps(contactForm); let i = index">
+          <div class="flip-card-inner" id=flipNewStep{{i}}>
+            <div class="flip-card-front">
+              <div class="nameTurnContainer">
+                <textarea class="inputPlaceName" type="text" placeholder="Step name" maxlength="20"
+                  [value]="step.controls.name.value" [formControl]="step.controls.name"></textarea>
+                <button class="buttonTurn" (click)="flipCard(i)">↻</button>
+              </div>
+              <button class="btn">Add image</button>
+            </div>
+            <div class="flip-card-back">
+              <div class="nameTurnContainer">
+                <textarea class="inputPlaceName" type="text" placeholder="Step name" maxlength="20"
+                  [value]="step.controls.name.value" [formControl]="step.controls.name"></textarea>
+                <button class="buttonTurn" (click)="flipCard(i)">↻</button>
+              </div>
+              <textarea class="inputPlaceText" name="newStepText" placeholder="Step text" maxlength="120"
+                [formControl]="step.controls.StepTextDTO.controls.text"></textarea>
+              <button class="btn" (click)="onSubmitStep(i, step.controls)" type="submit">Save Step</button>
+            </div>
+          </div>
+        </li>
+        <li class="flip-card" (click)="addSteps()">
+          <div class="newCard">+</div>
+        </li>
+      </ul>
+    </div>
+  </form>
+</div>

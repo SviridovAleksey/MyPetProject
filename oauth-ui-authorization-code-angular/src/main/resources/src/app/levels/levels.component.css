@@ -1,0 +1,424 @@
+/*level start*/
+
+.levelContainer {
+    list-style: none;
+    padding: 0;
+}
+
+.oneLevel {
+    margin-top: 1%;
+}
+
+.collapsible {
+    background-color: #c4ebc9;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+}
+
+#upBut {
+    background-color: #4cc767;
+    color: white;
+}
+
+.active,
+.collapsible:hover {
+    background-color: #87d5eb;
+}
+
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #dcf3ee;
+}
+
+/*level end*/
+
+
+.instructions {
+    padding-top: 115px;
+    margin-bottom: 115px;
+}
+
+/* flip card start */
+
+.cardContainer {
+    margin: 0 -0.29%;
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+}
+
+.nameTurnContainer {
+    width: 100%;
+    display: flex;
+}
+
+.flip-card {
+    background-color: transparent;
+    float: left;
+    height: 300px;
+    width: 24.4%;
+    padding: 0.3%;
+}
+
+.newCard {
+    display: flex;
+    flex-direction: column;
+    background-color: #1abc9c;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 350%;
+    transition: transform .6s;
+}
+
+.newCard:hover {
+    -ms-transform: scale(1.03);
+    /* IE 9 */
+    -webkit-transform: scale(1.03);
+    /* Safari 3-8 */
+    transform: scale(1.03);
+}
+
+
+@media (max-width: 795px) {
+    .flip-card {
+        width: 99.4%;
+        height: 200px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-inner:hover {
+    -ms-transform: scale(1.03);
+    /* IE 9 */
+    -webkit-transform: scale(1.03);
+    /* Safari 3-8 */
+    transform: scale(1.03);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* flip card end */
+
+.headInst {
+    width: 95%;
+    align-self: center;
+    background-color: transparent;
+    color: white;
+    border: none;
+    text-align: center;
+    resize: none;
+    outline: none;
+}
+
+.placeText {
+    width: 95%;
+    padding-top: 5%;
+    padding-left: 2%;
+    height: 100%;
+    word-break: break-word;
+}
+
+
+.buttonTurn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    padding: 5%;
+    font-size: 16px;
+}
+
+.buttonTurnFolder {
+    background-color: #c4ebc9;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+.mainFolderButton {
+    background-color: #4cc767;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+.active,
+.buttonTurnFolder:hover,
+.mainFolderButton:hover {
+    background-color: #87d5eb;
+}
+
+
+/* The Modal (background) */
+
+.cancelbtn,
+.deletebtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+
+.cancelbtn,
+.deletebtn:hover {
+    opacity: 1;
+}
+
+/* Float cancel and delete buttons and add an equal width */
+.cancelbtn,
+.deletebtn {
+    float: left;
+    width: 50%;
+}
+
+/* Add a color to the cancel button */
+.cancelbtn {
+    background-color: #ccc;
+    color: black;
+}
+
+/* Add a color to the delete button */
+.deletebtn {
+    background-color: #f44336;
+}
+
+/* Add padding and center-align text to the container */
+.containerModal {
+    padding: 16px;
+    text-align: center;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: #474e5d;
+    padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto;
+    /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+/* The Modal Close Button (x) */
+.close {
+    position: absolute;
+    right: 35px;
+    top: 15px;
+    font-size: 40px;
+    font-weight: bold;
+    color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Change styles for cancel button and delete button on extra small screens */
+@media screen and (max-width: 795px) {
+
+    .cancelbtn,
+    .deletebtn {
+        width: 100%;
+    }
+}
+
+/*buttonBack start*/
+
+.backFolder {
+    border-radius: 4px;
+    background-color: #249ecf;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 100%;
+    padding: 18px;
+    width: 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.backFolder span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.backFolder span:after {
+    content: '\00AB';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.backFolder:hover span {
+    padding-right: 25px;
+}
+
+.backFolder:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+
+/*buttonBackEnd*/
+
+/*buttonAddFolder start*/
+
+.addFolder {
+    margin-top: 8px;
+    border-radius: 4px;
+    background-color: #d54258;
+    border: none;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 100%;
+    padding: 18px;
+    width: 100%;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.addFolder span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.addFolder span:after {
+    content: '\002B';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.addFolder:hover span {
+    padding-right: 25px;
+}
+
+.addFolder:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+
+/*buttonBackEnd*/
+
+/*input name folder start*/
+
+.inputPlaceFolderName {
+    width: 100%;
+    background-color: #f5e4f5;
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    padding-top: 18px;
+    font-size: 15px;
+    border: none;
+    text-align: center;
+    resize: none;
+    outline: none;
+
+}
+
+/*input place name end*/
+
+.folderBox {
+    width: 100%;
+    display: flex;
+}
+
+.formFolderName {
+    width: 100%;
+}
+
+.defaultNameFolderContainer {
+    width: 100%;
+}
+
+.nameBox {
+    width: 100%;
+    display: flex;
+}

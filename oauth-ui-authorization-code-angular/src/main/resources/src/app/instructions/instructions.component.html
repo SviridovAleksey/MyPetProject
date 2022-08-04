@@ -1,0 +1,41 @@
+<ul class="cardContainer">
+  <li class="flip-card" *ngFor="let instruct of instructions; let i = index"
+    (dblclick)="showStepsInstruction(instruct)">
+    <div class="flip-card-inner" id=flipInst{{i}}>
+      <div class="flip-card-front">
+        <div class="nameTurnContainer">
+          <button class="buttonTurn" (click)="openRedactionInstruction(instruct)">&#9998;</button>
+          <h4 class="headInst">{{instruct.name}}</h4>
+          <button class="buttonTurn" (click)="flipCard(i)">&#8635;</button>
+        </div>
+        <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+      </div>
+      <div class="flip-card-back">
+        <div class="nameTurnContainer">
+          <button class="buttonTurn" (click)="openDelInstructWindow(instruct)">&#10006;</button>
+          <h4 class="headInst">{{instruct.name}}</h4>
+          <button class="buttonTurn" (click)="flipCard(i)">&#8634;</button>
+        </div>
+        <p class="placeText">{{instruct.description}}</p>
+      </div>
+    </div>
+  </li>
+</ul>
+
+
+
+<div id="myModal" class="modal">
+  <span onclick="document.getElementById('myModal').style.display='none'" class="close" title="Close Modal">×</span>
+  <form class="modal-content">
+    <div class="containerModal">
+      <h1>Delete Instruction</h1>
+      <p>Are you sure you want to delete your the instruction "{{prepareForDel.name}}"?</p>
+
+      <div class="clearfix">
+        <button type="buttonModal" onclick="document.getElementById('myModal').style.display='none'"
+          class="cancelbtn">Cancel</button>
+        <button type="buttonModal" (click)="deleteInstruction()" class="deletebtn">Delete</button>
+      </div>
+    </div>
+  </form>
+</div>

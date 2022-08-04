@@ -1,0 +1,213 @@
+<!-- first page start -->
+<ul class="levelContainer" *ngIf="!isHistoryExist()">
+  <button class="backFolder" *ngIf="isHistoryExist()" (click)="turnBackShowLevel()"><span>Back </span></button>
+  <button class="addFolder" (click)="addMainFolder()"><span>Add new folder </span></button>
+  <li class="oneLevel" *ngFor="let level of showLevel.keys(); let i = index">
+
+    <div class="defaultNameFolderContainer" id=nameFolder-1{{i}}>
+      <div class="nameBox">
+        <button class="mainFolderButton">&#10006;</button>
+        <button type="button" class="collapsible" id="upBut" (click)="openCloseCollaps(i)">{{level.name}}</button>
+        <button class="mainFolderButton "
+          (click)="openRedactionLevelName(level); activateRedactFolderName(-1,i)">&#9998;</button>
+      </div>
+    </div>
+    <div class="formFolderName" hidden="true" id=TextAreaFolder-1{{i}}>
+      <div class="nameBox">
+        <button class="mainFolderButton ">&#10006;</button>
+        <form [formGroup]="levelInfoForm" style="width: 100%; margin-bottom: -4px;">
+          <textarea class="inputPlaceFolderName" type="text" maxlength="20" formControlName="name"></textarea>
+        </form>
+        <button class="mainFolderButton" (click)="activateRedactFolderName(-1,i)">&#9998;</button>
+      </div>
+    </div>
+
+
+    <div class="content" id=collaps{{i}}>
+      <button class="addFolder" (click)="addFolder(level)"><span>Add new folder </span></button>
+      <ul class="levelContainer">
+        <li class="oneLevel" *ngFor="let nextLev of showLevel.get(level).level; let j = index">
+          <div class="folderBox">
+            <div class="nameTurnContainer">
+              <div class="defaultNameFolderContainer" id=nameFolder{{i}}{{j}}>
+                <div class="nameBox">
+                  <button class="buttonTurnFolder">&#10006;</button>
+                  <button type="button" class="collapsible" (click)=" openLevel(nextLev)">{{nextLev.name}}</button>
+                  <button class="buttonTurnFolder"
+                    (click)="openRedactionLevelName(nextLev); activateRedactFolderName(i,j)">&#9998;</button>
+                </div>
+              </div>
+              <div class="formFolderName" hidden="true" id=TextAreaFolder{{i}}{{j}}>
+                <div class="nameBox">
+                  <button class="buttonTurnFolder">&#10006;</button>
+                  <form [formGroup]="levelInfoForm" style="width: 100%; margin-bottom: -4px;">
+                    <textarea class="inputPlaceFolderName" type="text" maxlength="20" formControlName="name"></textarea>
+                  </form>
+                  <button class="buttonTurnFolder" (click)="activateRedactFolderName(i,j)">&#9998;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <ul class="cardContainer">
+        <li class="flip-card" *ngFor="let instruct of showLevel.get(level).instructions; let j = index"
+          (dblclick)="showStepsInstruction(instruct)">
+          <div class="flip-card-inner" id=flipInstF{{j}}>
+            <div class="flip-card-front">
+              <div class="nameTurnContainer">
+                <button class="buttonTurn" (click)="openRedactionInstruction(instruct)">&#9998;</button>
+                <h4 class="headInst">{{instruct.name}}</h4>
+                <button class="buttonTurn" (click)="flipCardF(j)">&#8635;</button>
+              </div>
+              <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+            </div>
+            <div class="flip-card-back">
+              <div class="nameTurnContainer">
+                <button class="buttonTurn" (click)="openDelInstructWindow(instruct)">&#10006;</button>
+                <h4 class="headInst">{{instruct.name}}</h4>
+                <button class="buttonTurn" (click)="flipCardF(j)">&#8634;</button>
+              </div>
+              <p class="placeText">{{instruct.description}}</p>
+            </div>
+          </div>
+        </li>
+        <li class="flip-card" (click)="addSteps(level.id)">
+          <div class="newCard">+</div>
+        </li>
+      </ul>
+    </div>
+  </li>
+</ul>
+
+<ul class="cardContainer" *ngIf="!isHistoryExist()">
+  <li class="flip-card" *ngFor="let instruct of noSortInstructions; let p = index"
+    (dblclick)="showStepsInstruction(instruct)">
+    <div class="flip-card-inner" id=flipNoSort{{p}}>
+      <div class="flip-card-front">
+        <div class="nameTurnContainer">
+          <button class="buttonTurn" (click)="openRedactionInstruction(instruct)">&#9998;</button>
+          <h4 class="headInst">{{instruct.name}}</h4>
+          <button class="buttonTurn" (click)="flipCardNoSort(p)">&#8635;</button>
+        </div>
+        <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+      </div>
+      <div class="flip-card-back">
+        <div class="nameTurnContainer">
+          <button class="buttonTurn" (click)="openDelInstructWindow(instruct)">&#10006;</button>
+          <h4 class="headInst">{{instruct.name}}</h4>
+          <button class="buttonTurn" (click)="flipCardNoSort(p)">&#8634;</button>
+        </div>
+        <p class="placeText">{{instruct.description}}</p>
+      </div>
+    </div>
+  </li>
+  <li class="flip-card" (click)="addSteps(0)">
+    <div class="newCard">+</div>
+  </li>
+</ul>
+
+<!-- first page end -->
+
+
+<!-- next pages start-->
+<ul class="levelContainer" *ngIf="isHistoryExist()">
+  <button class="backFolder" *ngIf="isHistoryExist()" (click)="turnBackShowLevel()"><span>Back </span></button>
+  <li class="oneLevel" *ngFor="let level of showLevel.keys(); let i = index">
+    <div class="defaultNameFolderContainer" id=nameFolder-1{{i}}>
+      <div class="nameBox">
+        <button class="mainFolderButton ">&#10006;</button>
+        <button type="button" class="collapsible" id="upBut" (click)="openCloseCollaps(i)">{{level.name}}</button>
+        <button class="mainFolderButton "
+          (click)="openRedactionLevelName(level); activateRedactFolderName(-1,i)">&#9998;</button>
+      </div>
+    </div>
+    <div class="formFolderName" hidden="true" id=TextAreaFolder-1{{i}}>
+      <div class="nameBox">
+        <button class="mainFolderButton ">&#10006;</button>
+        <form [formGroup]="levelInfoForm" style="width: 100%; margin-bottom: -4px;">
+          <textarea class="inputPlaceFolderName" type="text" maxlength="20" formControlName="name"></textarea>
+        </form>
+        <button class="mainFolderButton" (click)="activateRedactFolderName(-1,i)">&#9998;</button>
+      </div>
+    </div>
+    <div class="content" id=collaps{{i}}>
+      <button class="addFolder" (click)="addFolder(level)"><span>Add new folder </span></button>
+      <ul class="levelContainer">
+        <li class="oneLevel" *ngFor="let nextLev of showLevel.get(level).level; let j = index">
+          <div class="folderBox">
+            <div class="nameTurnContainer">
+              <div class="defaultNameFolderContainer" id=nameFolder{{i}}{{j}}>
+                <div class="nameBox">
+                  <button class="buttonTurnFolder">&#10006;</button>
+                  <button type="button" class="collapsible" (click)=" openLevel(nextLev)">{{nextLev.name}}</button>
+                  <button class="buttonTurnFolder"
+                    (click)="openRedactionLevelName(nextLev); activateRedactFolderName(i,j)">&#9998;</button>
+                </div>
+              </div>
+              <div class="formFolderName" hidden="true" id=TextAreaFolder{{i}}{{j}}>
+                <div class="nameBox">
+                  <button class="buttonTurnFolder">&#10006;</button>
+                  <form [formGroup]="levelInfoForm" style="width: 100%; margin-bottom: -4px;">
+                    <textarea class="inputPlaceFolderName" type="text" maxlength="20" formControlName="name"></textarea>
+                  </form>
+                  <button class="buttonTurnFolder" (click)="activateRedactFolderName(i,j)">&#9998;</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <ul class="cardContainer">
+      <li class="flip-card" *ngFor="let instruct of showLevel.get(level).instructions; let j = index"
+        (dblclick)="showStepsInstruction(instruct)">
+        <div class="flip-card-inner" id=flipInstF{{j}}>
+          <div class="flip-card-front">
+            <div class="nameTurnContainer">
+              <button class="buttonTurn" (click)="openRedactionInstruction(instruct)">&#9998;</button>
+              <h4 class="headInst">{{instruct.name}}</h4>
+              <button class="buttonTurn" (click)="flipCardF(j)">&#8635;</button>
+            </div>
+            <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+          </div>
+          <div class="flip-card-back">
+            <div class="nameTurnContainer">
+              <button class="buttonTurn" (click)="openDelInstructWindow(instruct)">&#10006;</button>
+              <h4 class="headInst">{{instruct.name}}</h4>
+              <button class="buttonTurn" (click)="flipCardF(j)">&#8634;</button>
+            </div>
+            <p class="placeText">{{instruct.description}}</p>
+          </div>
+        </div>
+      </li>
+      <li class="flip-card" (click)="addSteps(level.id)">
+        <div class="newCard">+</div>
+      </li>
+    </ul>
+
+  </li>
+</ul>
+
+<!-- next pages end-->
+
+
+
+
+
+
+<div id="myModalF" class="modal">
+  <span onclick="document.getElementById('myModalF').style.display='none'" class="close" title="Close Modal">×</span>
+  <form class="modal-content">
+    <div class="containerModal">
+      <h1>Delete Instruction</h1>
+      <p>Are you sure you want to delete your the instruction "{{prepareForDel.name}}"?</p>
+
+      <div class="clearfix">
+        <button type="buttonModal" onclick="document.getElementById('myModalF').style.display='none'"
+          class="cancelbtn">Cancel</button>
+        <button type="buttonModal" (click)="deleteInstruction()" class="deletebtn">Delete</button>
+      </div>
+    </div>
+  </form>
+</div>

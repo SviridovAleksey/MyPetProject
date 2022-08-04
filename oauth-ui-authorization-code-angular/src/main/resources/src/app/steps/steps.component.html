@@ -1,0 +1,16 @@
+<ul class="stepContainer">
+
+    <li class="flip-card" *ngFor="let step of steps; let i = index" (click)="flipCard(i)">
+        <div class="flip-card-inner" id=flipStep{{i}}>
+            <div class="flip-card-front">
+                <h4>{{step?.name}}</h4>
+                <img src="img_avatar.png" alt="Avatar" style="width:300px;height:300px;">
+            </div>
+            <div class="flip-card-back">
+                <h4>{{step?.name}}</h4>
+                <p class="placeText" >{{step?.stepTextDTO?.text}}</p>
+            </div>
+        </div>
+    </li>
+
+</ul>

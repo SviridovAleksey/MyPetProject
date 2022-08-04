@@ -1,0 +1,15 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.header {
+  padding: 50px;
+  text-align: center;
+  background: #009C74;
+  color: white;
+}
+
+.header h1 {
+  font-size: 40px;
+}

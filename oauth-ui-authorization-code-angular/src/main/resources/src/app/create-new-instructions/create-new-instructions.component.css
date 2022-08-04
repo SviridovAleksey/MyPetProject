@@ -1,0 +1,211 @@
+
+
+
+
+
+/* flip card start */
+
+.newInstContainer {
+    width: 100%;
+    margin: 0 -0.29%;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 3%;
+    margin-top: 3%;
+    text-align: -webkit-center;
+}
+
+.flip-cardNewInst {
+    background-color: transparent;
+    height: 300px;
+    width: 24.4%;
+    padding: 0.3%;
+}
+
+.flip-cardNewInst .flip-card-front {
+    background-color: #f44336;
+    color: black;
+}
+
+.flip-cardNewInst .flip-card-back {
+    background-color: #ff9800;
+    color: white;
+}
+
+.stepContainer {
+    width: 100%;
+    margin: 0 -0.29%;
+    list-style: none;
+    padding: 0;
+}
+
+.flip-card {
+    background-color: transparent;
+    float: left;
+    height: 300px;
+    width: 24.4%;
+    padding: 0.3%;
+}
+
+
+
+
+.flip-card-inner {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card-inner:hover {
+    -ms-transform: scale(1.03); /* IE 9 */
+    -webkit-transform: scale(1.03); /* Safari 3-8 */
+    transform: scale(1.03); 
+  }
+
+
+.flip-card-front,
+.flip-card-back {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: #bbb;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.nameTurnContainer {
+    width: 95%;
+    display: flex;
+    margin-inline-end: auto;
+    word-break: break-word;
+}
+
+/* flip card end */
+
+/* button style start */
+.btn {
+    background: border-box;
+    margin-top: auto;
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+    width: 100%;
+}
+
+/* Darker background on mouse-over */
+.btn:hover {
+    background-color: #1abc9c;
+}
+
+.buttonTurn {
+    background-color: transparent;
+    /* Green */
+    border: none;
+    color: white;
+    padding-right: 15px;
+    width: 5%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 50%;
+    margin-inline-end: auto;
+}
+
+.newCard {
+    display: flex;
+    flex-direction: column;
+    background-color: #1abc9c;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 350%;
+}
+
+textarea::placeholder {
+    color: white;
+}
+
+/* button style end */
+
+.inputPlaceName {
+    width: 95%;
+    padding-top: 5%;
+    align-self: center;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 160%;
+    text-align: center;
+    resize: none;
+    outline: none;
+    padding-left: 10%;
+}
+
+.inputPlaceText {
+    width: 95%;
+    padding-top: 5%;
+    height: 100%;
+    align-self: center;
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 140%;
+    text-align: center;
+    resize: none;
+    overflow: hidden;
+    outline: none;
+}
+
+
+@media (max-width: 795px) {
+
+    .newInstContainer {
+        margin: 0;
+        margin-bottom: 5%;
+        margin-top: 5%;
+    }
+    
+    .flip-cardNewInst {
+        width: 99.4%;
+        height: 200px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .stepContainer {
+        margin: 0;
+    }
+
+    .flip-card {
+        width: 99.4%;
+        height: 200px;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .inputPlaceText {
+        padding-top: 0;
+    }
+}
